@@ -24,6 +24,7 @@
     background: linear-gradient(to right, #fff, #94a3b8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: panelFadeIn 0.45s ease-out both;
 }
 
 /* Season Dropdown */
@@ -31,6 +32,7 @@
     max-width: 400px;
     margin: 0 auto 5rem;
     position: relative;
+    animation: panelFadeIn 0.45s ease-out 0.08s both;
 }
 
 .season-label {
@@ -94,21 +96,28 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeInUp 0.5s ease forwards;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: panelFadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translate3d(0, 18px, 0);
+    will-change: transform, opacity;
 }
 
 .nav-card:hover {
-    transform: translateY(-8px) !important; /* Override animation transform on hover */
+    transform: translateY(-8px);
     background-color: var(--card-hover);
     border-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes fadeInUp {
+@keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes panelFadeInUp {
+    from { opacity: 0; transform: translate3d(0, 18px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 /* Card Content */
@@ -168,4 +177,14 @@
 @media (max-width: 768px) {
     .page-title { font-size: 2.5rem; }
     .cards-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-title,
+    .season-selector,
+    .nav-card {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
 }

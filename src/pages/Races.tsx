@@ -4,11 +4,12 @@ import { fetchSeasonRaces, fetchRaceResults, type Race, type RaceResult } from '
 import { getTrackImage } from '../utils/tracks';
 import { getCountryFlag } from '../utils/flags';
 import { getTeamColor } from '../utils/team-colors';
+import { formatUtcDate, getCurrentYear, getTodayIsoDate } from '../utils/date';
 import './Races.css';
 
 export default function Races() {
     // Standardize initial year from local storage
-    const initialYear = Number(localStorage.getItem('selectedSeason')) || new Date().getFullYear();
+    const initialYear = Number(localStorage.getItem('selectedSeason')) || getCurrentYear();
     const [selectedYear, setSelectedYear] = useState<number>(initialYear);
     
     const [races, setRaces] = useState<Race[]>([]);
@@ -26,7 +27,7 @@ export default function Races() {
                 setRaces(seasonRaces);
                 
                 // Auto-select the next upcoming race, or the last completed one
-                const today = new Date().toISOString().split("T")[0];
+                const today = getTodayIsoDate();
                 let targetRace = seasonRaces.find(r => r.schedule.race.date >= today);
                 if (!targetRace && seasonRaces.length > 0) {
                     targetRace = seasonRaces[seasonRaces.length - 1];
@@ -44,7 +45,7 @@ export default function Races() {
     useEffect(() => {
         if (!selectedRace || activeTab !== 'results') return;
         
-        const today = new Date().toISOString().split("T")[0];
+        const today = getTodayIsoDate();
         if (selectedRace.schedule.race.date >= today) {
             setResults([]); // Future race, no results
             return;
@@ -65,18 +66,11 @@ export default function Races() {
         loadResults();
     }, [selectedRace, activeTab, selectedYear]);
 
-    const formatDate = (dateStr: string) => {
-        if (!dateStr) return "TBA";
-        const date = new Date(dateStr);
-        const utcDate = new Date(date.valueOf() + date.getTimezoneOffset() * 60000);
-        return utcDate.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" });
-    };
-
     const formatTime = (timeStr?: string) => {
         return timeStr ? timeStr.replace("Z", " UTC") : "TBA";
     };
 
-    const todayStr = new Date().toISOString().split("T")[0];
+    const todayStr = getTodayIsoDate();
 
     return (
         <div className="dashboard-container">
@@ -151,7 +145,7 @@ export default function Races() {
                                         <div className="detail-scroll-area info-grid-vertical">
                                             <div className="info-item">
                                                 <div className="info-label">Race Date</div>
-                                                <div className="info-value">{formatDate(selectedRace.schedule.race.date)}</div>
+                                                <div className="info-value">{formatUtcDate(selectedRace.schedule.race.date, { month: 'short', day: '2-digit', year: 'numeric' })}</div>
                                             </div>
                                             <div className="info-item">
                                                 <div className="info-label">Start Time</div>

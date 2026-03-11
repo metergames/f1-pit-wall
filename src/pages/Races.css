@@ -44,3 +44,38 @@
 
 .results-row { display: flex; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .results-pos { width: 30px; font-weight: 700; font-size: 0.9rem; }
+
+.race-list,
+.race-detail {
+	animation: panelFadeInUp 0.48s ease-out both;
+}
+
+.race-list { animation-delay: 0.04s; }
+.race-detail { animation-delay: 0.12s; }
+
+.race-list-item {
+	animation: itemFadeIn 0.35s ease-out both;
+}
+
+.race-list-item:nth-child(1) { animation-delay: 0.06s; }
+.race-list-item:nth-child(2) { animation-delay: 0.1s; }
+.race-list-item:nth-child(3) { animation-delay: 0.14s; }
+.race-list-item:nth-child(4) { animation-delay: 0.18s; }
+
+@keyframes panelFadeInUp {
+	from { opacity: 0; transform: translateY(12px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes itemFadeIn {
+	from { opacity: 0; transform: translateY(8px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.race-list,
+	.race-detail,
+	.race-list-item {
+		animation: none;
+	}
+}

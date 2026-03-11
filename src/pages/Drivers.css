@@ -45,3 +45,36 @@
 .races-table tr:last-child td { border-bottom: none; }
 .pos-text { font-weight: 700; width: 60px; }
 .pos-1 { color: #ffd700; } .pos-2 { color: #c0c0c0; } .pos-3 { color: #cd7f32; }
+
+.driver-list-sidebar,
+.driver-detail {
+	animation: panelFadeInUp 0.48s ease-out both;
+}
+
+.driver-list-sidebar { animation-delay: 0.04s; }
+.driver-detail { animation-delay: 0.12s; }
+
+.stats-grid,
+.chart-section,
+.races-table-section {
+	animation: panelFadeInUp 0.46s ease-out both;
+}
+
+.stats-grid { animation-delay: 0.16s; }
+.chart-section { animation-delay: 0.2s; }
+.races-table-section { animation-delay: 0.24s; }
+
+@keyframes panelFadeInUp {
+	from { opacity: 0; transform: translateY(12px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.driver-list-sidebar,
+	.driver-detail,
+	.stats-grid,
+	.chart-section,
+	.races-table-section {
+		animation: none;
+	}
+}

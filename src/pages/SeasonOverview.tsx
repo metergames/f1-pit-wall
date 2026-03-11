@@ -5,10 +5,11 @@ import { getTrackImage } from '../utils/tracks';
 import { getCountryFlag } from '../utils/flags';
 import { FaFlagCheckered, FaTimes } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
+import { formatUtcDate, getCurrentYear, getTodayIsoDate } from '../utils/date';
 import './SeasonOverview.css';
 
 export default function SeasonOverview() {
-    const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
+    const [selectedYear, setSelectedYear] = useState<number>(getCurrentYear());
     
     const [races, setRaces] = useState<Race[]>([]);
     const [standings, setStandings] = useState<DriverStanding[]>([]);
@@ -40,7 +41,7 @@ export default function SeasonOverview() {
                 setStandings(standingsData.drivers_championship || []);
 
                 // 3. Find Last Race and get Podium
-                const today = new Date().toISOString().split("T")[0];
+                const today = getTodayIsoDate();
                 const completedRaces = seasonRaces.filter(r => r.schedule.race.date < today);
                 const lastRace = completedRaces.length > 0 ? completedRaces[completedRaces.length - 1] : null;
 
@@ -58,14 +59,6 @@ export default function SeasonOverview() {
         loadDashboard();
     }, [selectedYear]);
 
-    // Format Helpers
-    const formatDate = (dateStr: string) => {
-        if (!dateStr) return "TBA";
-        const date = new Date(dateStr);
-        const utcDate = new Date(date.valueOf() + date.getTimezoneOffset() * 60000);
-        return utcDate.toLocaleDateString("en-US", { month: "short", day: "2-digit" });
-    };
-
     const openFullStandings = async () => {
         setIsModalOpen(true);
         if (fullStandings.length === 0) {
@@ -75,7 +68,7 @@ export default function SeasonOverview() {
     };
 
     // Derived Data for UI
-    const todayStr = new Date().toISOString().split("T")[0];
+    const todayStr = getTodayIsoDate();
     const nextRace = races.find(r => r.schedule.race.date >= todayStr);
     const completedRaces = races.filter(r => r.schedule.race.date < todayStr);
     const lastRace = completedRaces.length > 0 ? completedRaces[completedRaces.length - 1] : null;
@@ -95,11 +88,11 @@ export default function SeasonOverview() {
                             <div className="summary-sublabel">Races</div>
                         </div>
                         <div className="summary-item">
-                            <div className="summary-value">{races.length > 0 ? formatDate(races[0].schedule.race.date) : '--'}</div>
+                            <div className="summary-value">{races.length > 0 ? formatUtcDate(races[0].schedule.race.date, { month: 'short', day: '2-digit' }) : '--'}</div>
                             <div className="summary-sublabel">Start Date</div>
                         </div>
                         <div className="summary-item">
-                            <div className="summary-value">{races.length > 0 ? formatDate(races[races.length - 1].schedule.race.date) : '--'}</div>
+                            <div className="summary-value">{races.length > 0 ? formatUtcDate(races[races.length - 1].schedule.race.date, { month: 'short', day: '2-digit' }) : '--'}</div>
                             <div className="summary-sublabel">End Date</div>
                         </div>
                     </section>
@@ -127,7 +120,7 @@ export default function SeasonOverview() {
                                                 <img src={getCountryFlag(nextRace.circuit.country)} alt={nextRace.circuit.country} style={{ width: 24 }} />
                                                 <span>{nextRace.circuit.country}</span>
                                             </div>
-                                            <div style={{ fontWeight: 600 }}>{formatDate(nextRace.schedule.race.date)}</div>
+                                            <div style={{ fontWeight: 600 }}>{formatUtcDate(nextRace.schedule.race.date, { month: 'short', day: '2-digit' })}</div>
                                         </div>
                                     )}
                                 </div>

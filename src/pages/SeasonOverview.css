@@ -48,3 +48,37 @@
 .modal-content { background: var(--bg-color); width: 600px; max-height: 80vh; padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); overflow-y: auto; }
 .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .modal-close { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+.season-summary,
+.race-card,
+.standings-card {
+	animation: panelFadeInUp 0.5s ease-out both;
+}
+
+.season-summary { animation-delay: 0.04s; }
+.left-column .race-card:nth-child(1) { animation-delay: 0.12s; }
+.left-column .race-card:nth-child(2) { animation-delay: 0.2s; }
+.right-column .standings-card { animation-delay: 0.16s; }
+
+.modal-overlay { animation: overlayFadeIn 0.2s ease-out both; }
+.modal-content { animation: panelFadeInUp 0.28s ease-out both; }
+
+@keyframes panelFadeInUp {
+	from { opacity: 0; transform: translateY(14px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes overlayFadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.season-summary,
+	.race-card,
+	.standings-card,
+	.modal-overlay,
+	.modal-content {
+		animation: none;
+	}
+}

@@ -140,24 +140,42 @@ export default function LandingPage() {
             {/* How It Works Section */}
             <section className="how-it-works" id="features">
                 <div className="container">
-                    <h2 className="section-title">How It Works</h2>
+                    <div className="features-header">
+                        <p className="features-kicker">Platform Capabilities</p>
+                        <h2 className="section-title">Built for serious race analysis</h2>
+                        <p className="features-subtitle">
+                            Move from season selection to full race intelligence in three focused steps.
+                        </p>
+                    </div>
                     <div className="features-grid">
                         <article className="feature-card">
-                            <div className="feature-icon"><FaCalendarAlt /></div>
-                            <h3 className="feature-title">Pick a Season</h3>
-                            <p className="feature-description">Select any F1 season from the extensive history available through the API.</p>
+                            <div className="feature-card-top">
+                                <div className="feature-step">01</div>
+                                <div className="feature-icon"><FaCalendarAlt /></div>
+                            </div>
+                            <h3 className="feature-title">Choose your championship year</h3>
+                            <p className="feature-description">Jump into any available Formula 1 season and instantly load its full context.</p>
+                            <div className="feature-meta">Season selection • Historical coverage</div>
                         </article>
 
                         <article className="feature-card">
-                            <div className="feature-icon"><FaFlagCheckered /></div>
-                            <h3 className="feature-title">Explore Races & Drivers</h3>
-                            <p className="feature-description">Dive deep into race results, driver performances, and team statistics.</p>
+                            <div className="feature-card-top">
+                                <div className="feature-step">02</div>
+                                <div className="feature-icon"><FaFlagCheckered /></div>
+                            </div>
+                            <h3 className="feature-title">Drill into races and drivers</h3>
+                            <p className="feature-description">Break down every round with schedule detail, race outcomes, and driver-level performance.</p>
+                            <div className="feature-meta">Race timeline • Driver performance</div>
                         </article>
 
                         <article className="feature-card">
-                            <div className="feature-icon"><FaTrophy /></div>
-                            <h3 className="feature-title">Follow Driver Standings</h3>
-                            <p className="feature-description">Track the championship fight with live updates on driver and constructor standings.</p>
+                            <div className="feature-card-top">
+                                <div className="feature-step">03</div>
+                                <div className="feature-icon"><FaTrophy /></div>
+                            </div>
+                            <h3 className="feature-title">Track the title fight live</h3>
+                            <p className="feature-description">Monitor standings momentum and see who is gaining ground as the season evolves.</p>
+                            <div className="feature-meta">Championship trends • Live standings</div>
                         </article>
                     </div>
                     <div className="section-divider"></div>

@@ -4,21 +4,24 @@ import { fetchDriverStandings, fetchDriverDetail, type DriverStanding, type Driv
 import { getTeamColor } from '../utils/team-colors';
 import {
   Chart as ChartJS,
+    type ChartOptions,
   CategoryScale,
   LinearScale,
   BarElement,
   Title,
   Tooltip,
-  Legend
+    Legend,
+    type TooltipItem
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { formatUtcDate, getCurrentYear } from '../utils/date';
 import './Drivers.css';
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function Drivers() {
-    const initialYear = Number(localStorage.getItem('selectedSeason')) || new Date().getFullYear();
+    const initialYear = Number(localStorage.getItem('selectedSeason')) || getCurrentYear();
     const [selectedYear, setSelectedYear] = useState<number>(initialYear);
     
     // Sidebar state
@@ -100,9 +103,7 @@ export default function Drivers() {
     // Chart Configuration
     const chartData = {
         labels: driverResults.map(r => {
-            const date = new Date(r.race.date);
-            const utcDate = new Date(date.valueOf() + date.getTimezoneOffset() * 60000);
-            return utcDate.toLocaleDateString("en-US", { month: "short", day: "2-digit" });
+            return formatUtcDate(r.race.date, { month: 'short', day: '2-digit' });
         }),
         datasets: [
             {
@@ -118,7 +119,7 @@ export default function Drivers() {
         ],
     };
 
-    const chartOptions = {
+    const chartOptions: ChartOptions<'bar'> = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
@@ -128,8 +129,8 @@ export default function Drivers() {
                 titleColor: "#fff",
                 bodyColor: "#94a3b8",
                 callbacks: {
-                    title: (items: any) => driverResults[items[0].dataIndex]?.race.name,
-                    label: (context: any) => `Position: P${context.raw}`,
+                    title: (items: TooltipItem<'bar'>[]) => driverResults[items[0].dataIndex]?.race.name,
+                    label: (context: TooltipItem<'bar'>) => `Position: P${context.raw}`,
                 },
             },
         },
@@ -232,7 +233,7 @@ export default function Drivers() {
                                         <h2 className="section-title">Latest Finishing Positions</h2>
                                         <div className="chart-container">
                                             {!loadingDetails && driverResults.length > 0 ? (
-                                                <Bar data={chartData} options={chartOptions as any} />
+                                                <Bar data={chartData} options={chartOptions} />
                                             ) : (
                                                 <p style={{ color: '#94a3b8', textAlign: 'center', marginTop: '4rem' }}>
                                                     {loadingDetails ? 'Loading chart...' : 'No race data available.'}
