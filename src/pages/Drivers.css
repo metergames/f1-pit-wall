@@ -22,7 +22,7 @@
 
 /* Detail View */
 .driver-detail { background-color: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2.5rem; height: 100%; overflow-y: auto; position: relative; }
-.detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem; }
+.detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; }
 .driver-name { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; margin-bottom: 0.25rem; line-height: 1; }
 .driver-team { font-size: 1.1rem; color: var(--text-muted); }
 .driver-number { font-family: var(--font-heading); font-size: 6rem; font-weight: 700; color: var(--accent-red); line-height: 0.8; opacity: 0.9; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }

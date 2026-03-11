@@ -19,13 +19,13 @@
 .status-upcoming { background-color: rgba(0, 210, 190, 0.1); color: #00d2be; }
 
 /* Race Detail (Right Column) */
-.race-detail { background-color: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2.5rem; display: grid; grid-template-rows: auto 1fr; grid-template-columns: 1fr 380px; grid-template-areas: "header header" "map data"; gap: 2rem; height: 100%; overflow: hidden; }
+.race-detail { background-color: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2.5rem; display: grid; grid-template-rows: auto 1fr; grid-template-columns: 1fr; grid-template-areas: "header" "data"; gap: 0rem; height: 100%; overflow: hidden; }
 
-.detail-header { grid-area: header; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.detail-title { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 0.25rem; }
-.detail-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+.detail-header { grid-area: header; padding-bottom: 0.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.detail-title { font-family: var(--font-heading); font-size: 2rem; margin: 0; }
+.detail-subtitle { color: var(--text-muted); font-size: 1rem; margin: 0; }
 
-.detail-track-map { grid-area: map; height: 100%; background: radial-gradient(circle at center, #252a33 0%, var(--card-bg) 70%); border-radius: 8px; display: flex; alignItems: center; justifyContent: center; padding: 2rem; border: 1px solid rgba(255,255,255,0.03); }
+.detail-track-map { min-height: 260px; background: radial-gradient(circle at center, #252a33 0%, var(--card-bg) 70%); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.03); overflow: hidden; margin-bottom: 1.5rem; }
 .track-map-large { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 15px rgba(0,0,0,0.6)); }
 
 /* Inner Data Panel */
@@ -36,6 +36,11 @@
 .inner-tab.active::after { content: ""; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background-color: var(--accent-red); }
 
 .detail-scroll-area { overflow-y: auto; flex: 1; padding-right: 0.5rem; }
+
+@media (max-width: 1200px) {
+	.race-detail { padding: 1.75rem; }
+	.detail-track-map { min-height: 220px; }
+}
 
 .info-grid-vertical { display: flex; flex-direction: column; gap: 1.5rem; }
 .info-item { background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }

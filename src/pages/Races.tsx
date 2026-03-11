@@ -120,10 +120,6 @@ export default function Races() {
                                     <p className="detail-subtitle">{selectedRace.circuit.circuitName}, {selectedRace.circuit.city}</p>
                                 </div>
 
-                                <div className="detail-track-map">
-                                    <img src={getTrackImage(selectedRace.circuit.circuitId)} className="track-map-large" alt="Track layout" />
-                                </div>
-
                                 <div className="race-data-panel">
                                     <div className="detail-tabs">
                                         <button 
@@ -142,14 +138,20 @@ export default function Races() {
 
                                     {/* INFO TAB */}
                                     {activeTab === 'info' && (
-                                        <div className="detail-scroll-area info-grid-vertical">
-                                            <div className="info-item">
-                                                <div className="info-label">Race Date</div>
-                                                <div className="info-value">{formatUtcDate(selectedRace.schedule.race.date, { month: 'short', day: '2-digit', year: 'numeric' })}</div>
+                                        <div className="detail-scroll-area">
+                                            <div className="detail-track-map">
+                                                <img src={getTrackImage(selectedRace.circuit.circuitId)} className="track-map-large" alt="Track layout" />
                                             </div>
-                                            <div className="info-item">
-                                                <div className="info-label">Start Time</div>
-                                                <div className="info-value">{formatTime(selectedRace.schedule.race.time)}</div>
+
+                                            <div className="info-grid-vertical">
+                                                <div className="info-item">
+                                                    <div className="info-label">Race Date</div>
+                                                    <div className="info-value">{formatUtcDate(selectedRace.schedule.race.date, { month: 'short', day: '2-digit', year: 'numeric' })}</div>
+                                                </div>
+                                                <div className="info-item">
+                                                    <div className="info-label">Start Time</div>
+                                                    <div className="info-value">{formatTime(selectedRace.schedule.race.time)}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     )}
