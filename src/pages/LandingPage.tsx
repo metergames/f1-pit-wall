@@ -184,7 +184,7 @@ export default function LandingPage() {
 
             <footer className="footer" id="about">
                 <div className="container">
-                    <p className="footer-text">© 2025 Pit Wall. Data powered by the community-maintained F1 API (f1api.dev).</p>
+                    <p className="footer-text">© 2026 Pit Wall. Data powered by the community-maintained F1 API (f1api.dev).</p>
                 </div>
             </footer>
         </div>
