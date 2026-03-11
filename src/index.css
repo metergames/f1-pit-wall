@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Overpass+Mono:wght@500&display=swap');
+
+:root {
+    /* Color Palette - F1 Dark Theme */
+    --bg-color: #0b0e11;
+    --card-bg: #15191e;
+    --card-hover: #1e2329;
+    
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    
+    /* Accents */
+    --accent-red: #e10600;
+    --accent-red-hover: #ff1e1e;
+    
+    /* Standings Ranks */
+    --rank-gold: #fcd34d;
+    --rank-silver: #9ca3af;
+    --rank-bronze: #b45309;
+    
+    /* Fonts */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'Overpass Mono', monospace;
+    
+    --border-radius: 12px;
+    --container-width: 1200px;
+
+    --scrollbar-track: var(--bg-color);
+    --scrollbar-thumb: #2b313a;
+    --scrollbar-thumb-hover: #3b4450;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 999px;
+    border: 2px solid var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}

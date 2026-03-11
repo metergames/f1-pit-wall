@@ -1,0 +1,171 @@
+/* Main Layout */
+.main-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Season Dropdown */
+.season-selector {
+    max-width: 400px;
+    margin: 0 auto 5rem;
+    position: relative;
+}
+
+.season-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-left: 4px;
+}
+
+.dropdown-wrapper {
+    position: relative;
+}
+
+.season-dropdown {
+    width: 100%;
+    appearance: none;
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.season-dropdown:hover, .season-dropdown:focus {
+    border-color: var(--accent-red);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.2);
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-red);
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+/* Navigation Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.nav-card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.nav-card:hover {
+    transform: translateY(-8px) !important; /* Override animation transform on hover */
+    background-color: var(--card-hover);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card Content */
+.card-icon {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(225, 6, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--accent-red);
+    font-size: 1.75rem;
+    transition: transform 0.3s ease;
+}
+
+.nav-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+    background-color: rgba(225, 6, 0, 0.2);
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+}
+
+.card-description {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+/* Open Button */
+.btn-open {
+    background-color: transparent;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-body);
+    width: 100%;
+}
+
+.btn-open:hover {
+    background-color: var(--accent-red);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .page-title { font-size: 2.5rem; }
+    .cards-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}

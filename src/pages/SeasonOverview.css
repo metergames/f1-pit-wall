@@ -1,0 +1,50 @@
+/* Layout & Navigation */
+.dashboard-container { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+.main-content { padding: 2rem 0; flex: 1; overflow-y: auto; }
+
+/* Season Summary */
+.season-summary { position: relative; background-color: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 4rem 3rem 1.5rem; display: flex; justify-content: space-between; margin-bottom: 2rem; }
+.summary-label { position: absolute; top: 1.5rem; left: 3rem; font-size: 0.9rem; color: var(--text-muted); }
+.summary-item { display: flex; flex-direction: column; }
+.summary-value { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 500; line-height: 1.1; margin-bottom: 0.25rem; }
+.summary-sublabel { font-size: 0.9rem; color: var(--text-muted); }
+
+/* Grid & Cards */
+.content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+.left-column { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.race-card, .standings-card { background-color: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; }
+.race-card { height: 500px; }
+
+.track-image { height: 280px; background: radial-gradient(circle at center, #252a33 0%, var(--card-bg) 70%); display: flex; align-items: center; justify-content: center; padding: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.track-map { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
+.race-card:hover .track-map { transform: scale(1.05); }
+
+.race-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.race-label { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+.race-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+.race-details { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+
+/* Podium List */
+.podium-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.podium-row { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; min-width: 0; }
+.podium-pos { font-weight: 700; width: 10px; }
+.pos-1 { color: #ffd700; } .pos-2 { color: #c0c0c0; } .pos-3 { color: #cd7f32; }
+.team-pill { width: 4px; height: 16px; border-radius: 4px; }
+.podium-driver-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Standings Card */
+.standings-card { padding: 1.5rem; height: 100%; }
+.standings-header { margin-bottom: 2rem; }
+.standings-table-header, .driver-row { display: grid; grid-template-columns: 30px 1fr 1fr 50px; align-items: center; }
+.standings-table-header { color: var(--text-muted); font-size: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem; }
+.driver-row { font-size: 0.95rem; margin-bottom: 1.2rem; }
+.col-team-name { color: var(--text-muted); font-size: 0.9rem; }
+.driver-points { color: #00d2be; font-weight: 600; text-align: right; }
+
+.btn-view-full { background-color: var(--accent-red); color: white; border: none; width: 100%; padding: 0.9rem; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: auto; }
+
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.modal-content { background: var(--bg-color); width: 600px; max-height: 80vh; padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); overflow-y: auto; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.modal-close { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
