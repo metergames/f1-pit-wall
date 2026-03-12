@@ -92,10 +92,16 @@ export default function Drivers() {
 
     // Calculated Stats
     const podiums = driverResults.filter(r => r.result.finishingPosition && r.result.finishingPosition <= 3).length;
-    
-    const finishes = driverResults.filter(r => !r.result.retired && r.result.finishingPosition !== null);
-    const avgFinish = finishes.length 
-        ? (finishes.reduce((sum, r) => sum + r.result.finishingPosition!, 0) / finishes.length).toFixed(1)
+
+    const finishPositions = driverResults.flatMap((r) => {
+        if (r.result.retired) return [];
+
+        return typeof r.result.finishingPosition === 'number' && Number.isFinite(r.result.finishingPosition)
+            ? [r.result.finishingPosition]
+            : [];
+    });
+    const avgFinish = finishPositions.length
+        ? (finishPositions.reduce((sum, position) => sum + position, 0) / finishPositions.length).toFixed(1)
         : "-";
 
     const last5Races = [...driverResults].reverse().slice(0, 5);

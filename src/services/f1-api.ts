@@ -65,7 +65,7 @@ export interface DriverResult {
     };
     result: {
         finishingPosition: number | null;
-        retired: boolean;
+        retired: string | null;
         pointsObtained: number;
     };
 }
