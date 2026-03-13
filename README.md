@@ -1,73 +1,15 @@
-# React + TypeScript + Vite
+**Live Demo:** [Pit Wall](https://metergames.github.io/f1-pit-wall/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pit Wall is a high-performance, responsive web application engineered to track, parse, and visualize complex Formula 1 data. Built from the ground up using React, TypeScript, and Vite, this dashboard consumes external REST APIs to deliver real-time metrics on drivers, races, and historical seasons. The project heavily emphasizes strict type safety, modular component architecture, and optimized routing logic to ensure a seamless and lightning-fast user experience.
 
-Currently, two official plugins are available:
+**Core Features:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Real-Time Data Pipelines:** Manages asynchronous REST API requests to fetch and display live and historical F1 statistics.
 
-## React Compiler
+- **Type-Safe Architecture:** Utilizes TypeScript interfaces and types to ensure strict data validation and eliminate runtime errors when handling complex API payloads.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Modular UI Components:** Built with reusable React components to maintain a clean codebase and a highly responsive, interactive front-end.
 
-## Expanding the ESLint configuration
+- **Lightning-Fast Builds:** Leverages Vite for an optimized development experience and highly performant production builds.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Tech Stack:** React, TypeScript, Vite, HTML5, CSS3, REST APIs
