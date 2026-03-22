@@ -35,7 +35,7 @@
 /* Standings Card */
 .standings-card { padding: 1.5rem; height: 100%; }
 .standings-header { margin-bottom: 2rem; }
-.standings-table-header, .driver-row { display: grid; grid-template-columns: 30px 1fr 1fr 50px; align-items: center; }
+.standings-table-header, .driver-row { display: grid; grid-template-columns: 30px 1fr 1fr 50px; column-gap: 0.85rem; align-items: center; }
 .standings-table-header { color: var(--text-muted); font-size: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem; }
 .driver-row { font-size: 0.95rem; margin-bottom: 1.2rem; }
 .col-team-name { color: var(--text-muted); font-size: 0.9rem; }
