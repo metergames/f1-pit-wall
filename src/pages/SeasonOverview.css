@@ -10,10 +10,11 @@
 .summary-sublabel { font-size: 0.9rem; color: var(--text-muted); }
 
 /* Grid & Cards */
-.content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
-.left-column { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.race-card, .standings-card { background-color: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; }
-.race-card { height: 500px; }
+.content-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; align-items: stretch; }
+.left-column,
+.right-column { display: contents; }
+.race-card, .standings-card { background-color: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; height: 100%; }
+.race-card { min-height: 0; }
 
 .track-image { height: 280px; background: radial-gradient(circle at center, #252a33 0%, var(--card-bg) 70%); display: flex; align-items: center; justify-content: center; padding: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .track-map { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
@@ -62,6 +63,12 @@
 
 .modal-overlay { animation: overlayFadeIn 0.2s ease-out both; }
 .modal-content { animation: panelFadeInUp 0.28s ease-out both; }
+
+@media (max-width: 1100px) {
+	.content-grid { grid-template-columns: 1fr; }
+	.left-column,
+	.right-column { display: contents; }
+}
 
 @keyframes panelFadeInUp {
 	from { opacity: 0; transform: translateY(14px); }
